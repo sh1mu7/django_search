@@ -2,43 +2,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link
+            href=
+                    "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css"
+            rel="stylesheet"
+    />
+    <script src=
+                    "https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js">
+    </script>
+    <script src=
+                    "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js">
+    </script>
+    <link rel="stylesheet" href="../static/style.css"/>
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous"
+    />
+    <link href="https://unpkg.com/@webpixels/css/dist/index.css" rel="stylesheet">
 
-    <link rel="stylesheet" href=" {% static 'style.css' %} ">
-    
+
+    <link rel="stylesheet" href=" {% static 'style.css' %} "/>
+
     <title>Home</title>
 </head>
 <body>
-    
-   <div class="container">
-    <div class="container bg-danger pb-3">
+<div class="container">
+    <div class="container  bg-shade-dark pb-3 pt-5 ">
+        <h1 class="text-center text-white ">Advance Search</h1>
+        <h4 class="text-center pb-5 text-white">
+            Enter your search keywords in the following:
+        </h4>
+    </div>
+    <div class="container">
+        <div class="row pb-3 pt-5 ">
+            <div class="col-sm-12 col-lg-12 col-md-12 pt-3 pb-3 bottom-1">
+                <div class="row mt-1">
+                    <div class="col-lg-6 col-md-12 col-sm-6">
+                        <form class="row g-3 pb-2 " method="GET" action=" {% url 'test:home' %} ">
+                            <h4 class="pt-2 pb-2 text-center bg-dark text-white">Filter your data.</h4>
 
+                            <div class="row">
+                                <div class="col-md-6 pt-2">
+                                    <label for="Min_View" class="form-label">Min View</label>
+                                    <input type="number" class="form-control " id="Min_View" name="min_view">
+                                </div>
+                                <div class="col-md-6 pt-2">
+                                    <label for="Max_View" class="form-label">Max View</label>
+                                    <input type="number" class="form-control" id="Max_View" name="max_view">
+                                </div>
+                            </div>
 
-    <h1 class="text-center">Basic Search</h1>
-    <h4 class="text-center pb-5">Enter your search keywords in the following:</h4>
-    <form action="{% url 'test:search' %}" method="GET">
-        <div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Search by name or quote..." name="q" aria-label="Example text with button addon" aria-describedby="button-addon1">
-              <button class="btn btn-secondary text-white" type="submit" id="button-addon1">Button</button>
+                            <div class="row">
+                                <div class="col-md-6 pt-2">
+                                    <label for="Min_Pub" class="form-label">Start Publication date</label>
+                                    <input type="date" class="form-control " id="Min_Pub" name="min_date">
+                                </div>
+                                <div class="col-md-6 pt-2">
+                                    <label for="Max_Pub" class="form-label">End Publication date</label>
+                                    <input type="date" class="form-control" id="Max_Pub" name="max_date">
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-6 col-lg-6 col-sm-12">
+                                    <button class=" btn btn-outline-dark mt-2 w-full" type="submit" >Filter</button>
+                                </div>
+                                <div class="col-md-6 col-lg-6 col-sm-12">
 
+                                    <a class=" btn btn-outline-danger mt-2 w-full" href="{% url 'test:home' %}" type="reset" >Reset</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-sm-6">
+                        <form class="row g-3 pb-2" method="GET" action=" {% url 'test:home' %} ">
+                            <h4 class="pt-2 pb-2 text-center bg-dark text-white">Search through your data.</h4>
+
+                            <div class="row">
+                                <div class="col-md-6 pt-2">
+                                    <label for="author" class="form-label">Author Name</label>
+                                    <input type="text" class="form-control " id="author" name="author">
+                                </div>
+                                <div class="col-md-6 pt-2">
+                                    <label for="title" class="form-label">Title</label>
+                                    <input type="text" class="form-control" id="title" name="title">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 pt-2">
+                                    <label for="view" class="form-label">View</label>
+                                    <input type="number" class="form-control " id="view" name="view">
+                                </div>
+                            </div>
+
+                            <div class="row mt-2">
+                                <div class="col-md-6 col-lg-6 col-sm-12">
+                                    <button class=" btn btn-outline-dark mt-2 w-full" type="submit" >Search</button>
+                                </div>
+                                <div class="col-md-6 col-lg-6 col-sm-12">
+
+                                    <a class=" btn btn-outline-danger mt-2 w-full" href="{% url 'test:home' %}" type="reset" >Reset</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <hr>
+                <h3 class=" text-dark text-center ">Post list</h3>
+                <hr>
+                <div class="table-responsive">
+                    <table class="table table-hover table-nowrap ">
+                        <thead class="bg-soft-dark text-dark text-heading">
+                        <tr>
+                            <th scope="col">Author</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Post</th>
+                            <th scope="col">Views</th>
+                            <th scope="col">Published Date</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in objects %}
+                            <tr class="border-bottom-1 border-dark">
+                                <td data-label="Author">
+                                    <p class="text-heading font-semibold">{{ i.author_name }}</p>
+                                </td>
+                                <td data-label="Title">
+                                    <span>{{ i.title|truncatechars:40 }}</span>
+                                </td>
+                                <td data-label="Post" class="text-current">
+                                    {{ i.post|truncatechars:70 }}
+                                </td>
+                                <td data-label="Views">
+                                    <p class="badge bg-soft-dark text-dark">{{ i.views }}</p>
+                                </td>
+                                <td data-label="Published Date">
+                                    <p class="badge bg-soft-danger text-dark">{{ i.published_date }}</p>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-{#        <input type="text" class="form-control " id="exampleFormControlInput1" name="q" placeholder="Search by name or quote...">#}
-    </form>
-</div>
-    
-       <div class="pt-5">
-        {% for i  in objects %}
-        <li >{{i.quote}} -- <span class="bg-dark text-white">{{i.author}}</span> </li>
-        {% endfor %}
-       </div>
-   </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-</body>     
+
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+    $(".date").datepicker({
+        format: "yyyy-mm-dd",
+    });
+</script>
+</body>
 </html>
-
-
